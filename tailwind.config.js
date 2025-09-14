@@ -1,6 +1,5 @@
-import type { Config } from 'tailwindcss'
-
-const config: Config = {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -9,115 +8,110 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: 'hsl(var(--background))',
-        foreground: 'hsl(var(--foreground))',
+        // Primary brand colors
         primary: {
-          DEFAULT: '#8B2635',
-          50: '#FDF2F4',
-          100: '#F9DDE1',
-          200: '#F2B8C1',
-          300: '#E7879A',
-          400: '#D95171',
-          500: '#C53E5C',
-          600: '#B02B48',
-          700: '#8B2635',
-          800: '#761F2E',
-          900: '#5E1A26',
-          950: '#3F1017'
+          50: '#fef7ee',
+          100: '#fdedd3',
+          200: '#fbd7a5',
+          300: '#f8bb6d',
+          400: '#f59432',
+          500: '#f37316', // Main primary color
+          600: '#e4570c',
+          700: '#bd420c',
+          800: '#973512',
+          900: '#7a2e12',
         },
+        // Secondary colors
         secondary: {
-          DEFAULT: '#6B5B73',
-          50: '#F7F5F8',
-          100: '#EFEBF1',
-          200: '#DCCFE4',
-          300: '#C4B0D0',
-          400: '#A88FB8',
-          500: '#92749E',
-          600: '#7D5E85',
-          700: '#6B5B73',
-          800: '#594C60',
-          900: '#4A404F',
-          950: '#2E252F'
+          50: '#f8fafc',
+          100: '#f1f5f9',
+          200: '#e2e8f0',
+          300: '#cbd5e1',
+          400: '#94a3b8',
+          500: '#64748b', // Main secondary color
+          600: '#475569',
+          700: '#334155',
+          800: '#1e293b',
+          900: '#0f172a',
         },
+        // Accent colors
         accent: {
-          DEFAULT: '#D4AF37',
-          50: '#FEFBF0',
-          100: '#FDF6DB',
-          200: '#FAEAB8',
-          300: '#F6DA8A',
-          400: '#F1C85A',
-          500: '#EDB935',
-          600: '#D4AF37',
-          700: '#B4932A',
-          800: '#927526',
-          900: '#786024',
-          950: '#453512'
+          50: '#fef2f2',
+          100: '#fee2e2',
+          200: '#fecaca',
+          300: '#fca5a5',
+          400: '#f87171',
+          500: '#ef4444', // Main accent color
+          600: '#dc2626',
+          700: '#b91c1c',
+          800: '#991b1b',
+          900: '#7f1d1d',
         },
+        // Warm background colors
         warm: {
-          50: '#FEFCFB',
-          100: '#FDF8F6',
-          200: '#FAF0EC',
-          300: '#F6E7E0',
-          400: '#F0D6CB',
-          500: '#E8C1B0',
-          600: '#DDA78F',
-          700: '#CE8A6B',
-          800: '#B56B47',
-          900: '#8B4513',
-          950: '#5D2F0C'
+          50: '#fefdfb',
+          100: '#fef7ee',
+          200: '#fdedd3',
+          300: '#fbd7a5',
+          400: '#f8bb6d',
+          500: '#f59432',
         },
-        border: 'hsl(var(--border))',
-        input: 'hsl(var(--input))',
-        ring: 'hsl(var(--ring))',
-        card: {
-          DEFAULT: 'hsl(var(--card))',
-          foreground: 'hsl(var(--card-foreground))',
-        },
-        popover: {
-          DEFAULT: 'hsl(var(--popover))',
-          foreground: 'hsl(var(--popover-foreground))',
-        },
-        muted: {
-          DEFAULT: 'hsl(var(--muted))',
-          foreground: 'hsl(var(--muted-foreground))',
-        },
-        destructive: {
-          DEFAULT: 'hsl(var(--destructive))',
-          foreground: 'hsl(var(--destructive-foreground))',
-        },
-      },
-      gradientColorStops: {
-        'gradient-primary': '#8B2635',
-        'gradient-secondary': '#D4AF37',
+        // Custom border color to fix the error
+        border: '#e2e8f0', // This fixes the border-border class error
+        // Additional custom colors for the restaurant theme
+        tibetan: {
+          gold: '#d4af37',
+          maroon: '#800000',
+          saffron: '#ff9500',
+        }
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Inter', 'sans-serif'],
       },
-      spacing: {
-        'container': '1200px',
-      },
-      borderRadius: {
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
-      },
-      keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
+      boxShadow: {
+        'soft': '0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04)',
+        'soft-lg': '0 10px 25px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
       },
       animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
+        'fade-in': 'fadeIn 0.5s ease-in-out',
+        'slide-up': 'slideUp 0.5s ease-out',
+        'bounce-gentle': 'bounceGentle 2s infinite',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        slideUp: {
+          '0%': { transform: 'translateY(30px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+        bounceGentle: {
+          '0%, 20%, 50%, 80%, 100%': { transform: 'translateY(0)' },
+          '40%': { transform: 'translateY(-10px)' },
+          '60%': { transform: 'translateY(-5px)' },
+        },
+      },
+      spacing: {
+        '18': '4.5rem',
+        '72': '18rem',
+        '84': '21rem',
+        '96': '24rem',
+      },
+      borderRadius: {
+        '2xl': '1rem',
+        '3xl': '1.5rem',
+      },
+      maxWidth: {
+        '8xl': '88rem',
+        '9xl': '96rem',
+      },
+      backgroundImage: {
+        'gradient-primary': 'linear-gradient(135deg, #f37316 0%, #e4570c 100%)',
+        'gradient-warm': 'linear-gradient(135deg, #fefdfb 0%, #fdedd3 100%)',
+        'gradient-tibetan': 'linear-gradient(135deg, #d4af37 0%, #ff9500 100%)',
       },
     },
   },
   plugins: [],
 }
-
-export default config
