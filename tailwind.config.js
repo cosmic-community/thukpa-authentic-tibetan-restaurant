@@ -1,92 +1,123 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+import type { Config } from 'tailwindcss'
+
+const config: Config = {
   content: [
-    './app/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}',
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
       colors: {
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
         primary: {
-          DEFAULT: '#8B4513',
-          50: '#FDF7F0',
-          100: '#F8E7D1',
-          200: '#F0CDAA',
-          300: '#E5B584',
-          400: '#D4975C',
-          500: '#C17817',
-          600: '#8B4513',
-          700: '#6B3410',
-          800: '#4A240B',
-          900: '#2A1306',
+          DEFAULT: '#8B2635',
+          50: '#FDF2F4',
+          100: '#F9DDE1',
+          200: '#F2B8C1',
+          300: '#E7879A',
+          400: '#D95171',
+          500: '#C53E5C',
+          600: '#B02B48',
+          700: '#8B2635',
+          800: '#761F2E',
+          900: '#5E1A26',
+          950: '#3F1017'
         },
         secondary: {
-          DEFAULT: '#CD853F',
-          50: '#FDF8F2',
-          100: '#F7E7D6',
-          200: '#EFCFA8',
-          300: '#E5B67A',
-          400: '#D9984C',
-          500: '#CD853F',
-          600: '#B56F2F',
-          700: '#8B5423',
-          800: '#613A18',
-          900: '#37200E',
+          DEFAULT: '#6B5B73',
+          50: '#F7F5F8',
+          100: '#EFEBF1',
+          200: '#DCCFE4',
+          300: '#C4B0D0',
+          400: '#A88FB8',
+          500: '#92749E',
+          600: '#7D5E85',
+          700: '#6B5B73',
+          800: '#594C60',
+          900: '#4A404F',
+          950: '#2E252F'
         },
         accent: {
-          DEFAULT: '#D2691E',
-          50: '#FDF5F0',
-          100: '#F9E2D1',
-          200: '#F2C5A3',
-          300: '#E8A575',
-          400: '#DD8547',
-          500: '#D2691E',
-          600: '#B85318',
-          700: '#8F4013',
-          800: '#662D0E',
-          900: '#3D1B08',
+          DEFAULT: '#D4AF37',
+          50: '#FEFBF0',
+          100: '#FDF6DB',
+          200: '#FAEAB8',
+          300: '#F6DA8A',
+          400: '#F1C85A',
+          500: '#EDB935',
+          600: '#D4AF37',
+          700: '#B4932A',
+          800: '#927526',
+          900: '#786024',
+          950: '#453512'
         },
         warm: {
-          50: '#FFFBF7',
-          100: '#FEF3E7',
-          200: '#FCE4C7',
-          300: '#F9D4A7',
-          400: '#F5C487',
-          500: '#F1B567',
-          600: '#CD9A52',
-          700: '#A97E42',
-          800: '#856232',
-          900: '#614622',
+          50: '#FEFCFB',
+          100: '#FDF8F6',
+          200: '#FAF0EC',
+          300: '#F6E7E0',
+          400: '#F0D6CB',
+          500: '#E8C1B0',
+          600: '#DDA78F',
+          700: '#CE8A6B',
+          800: '#B56B47',
+          900: '#8B4513',
+          950: '#5D2F0C'
         },
+        border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
+        card: {
+          DEFAULT: 'hsl(var(--card))',
+          foreground: 'hsl(var(--card-foreground))',
+        },
+        popover: {
+          DEFAULT: 'hsl(var(--popover))',
+          foreground: 'hsl(var(--popover-foreground))',
+        },
+        muted: {
+          DEFAULT: 'hsl(var(--muted))',
+          foreground: 'hsl(var(--muted-foreground))',
+        },
+        destructive: {
+          DEFAULT: 'hsl(var(--destructive))',
+          foreground: 'hsl(var(--destructive-foreground))',
+        },
+      },
+      gradientColorStops: {
+        'gradient-primary': '#8B2635',
+        'gradient-secondary': '#D4AF37',
       },
       fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
-        display: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
       },
-      backgroundImage: {
-        'gradient-warm': 'linear-gradient(135deg, #F1B567 0%, #D2691E 100%)',
-        'gradient-primary': 'linear-gradient(135deg, #8B4513 0%, #CD853F 100%)',
+      spacing: {
+        'container': '1200px',
       },
-      animation: {
-        'fade-in': 'fadeIn 0.5s ease-in-out',
-        'slide-up': 'slideUp 0.5s ease-out',
-        'bounce-gentle': 'bounceGentle 2s infinite',
+      borderRadius: {
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)',
       },
       keyframes: {
-        fadeIn: {
-          '0%': { opacity: '0' },
-          '100%': { opacity: '1' },
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
-        slideUp: {
-          '0%': { opacity: '0', transform: 'translateY(20px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
-        bounceGentle: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-10px)' },
-        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },
   plugins: [],
 }
+
+export default config
